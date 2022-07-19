@@ -1,13 +1,22 @@
 import React from "react";
+import { ReactPropTypes } from "react";
+import axios from ;
 
-function Searchbar() {
-    const handleInputChange = (search)=>{
- console.log("search.target.value")
+function Searchbar({searchText, setSearchText}) {
+    const handleInputChange = (event)=>{
+ setSearchText("event.target.value")
     }
     return(
 <div>
-    <input type="text" id="searchcriteria" size="100%" onChange={handleInputChange}></input>
-    <button id="search-button"> Search</button>
+    <form>
+    <input type="text" id="searchcriteria" size="100%" onChange={handleInputChange} value={searchText}></input>
+    </form>
+    <button id="search-button" type="submit"> Search</button>
 </div>
-)}
-export default Searchbar
+)};
+
+export default Searchbar;
+Searchbar.propTypes ={
+    searchText:propTypes.string.isRequired,
+    setSearchText:propTypes.string.isRequired,
+};

@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { ReactPropTypes } from "react";
-import axios from ;
+import getImageSearch from "./getImages";
 
-function Searchbar({searchText, setSearchText}) {
-    const handleInputChange = (event)=>{
- setSearchText("event.target.value")
+
+function Searchbar() {
+    const [searchText, setSearchText] = useState();
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        getImageSearch(searchText)
     }
     return(
-<div>
-    <form>
-    <input type="text" id="searchcriteria" size="100%" onChange={handleInputChange} value={searchText}></input>
+<div className="search">
+    <form className="search-form" onSubmit={handleSubmit}>
+    <input type="text" id="searchcriteria" size="100%" onChange={(e) => setSearchText(e.target.value)} value={searchText}></input>
     </form>
     <button id="search-button" type="submit"> Search</button>
 </div>
